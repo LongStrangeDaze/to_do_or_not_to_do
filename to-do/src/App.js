@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+
+
 function App() {
   const [list, setList] = useState([]);
   const [input, setInput] = useState("");
@@ -9,15 +11,15 @@ function App() {
     id: Math.random(),
     todo: todo,
     };
+
+    // add to the todo list
+    setList([...list, newTodo]);
+
+    //clear input box
+    setInput("");
   };
 
-  // add to the todo list
-  setList([...list, newTodo]);
-
-  //clear input box
-  setInput("");
-
-  const deleteTodo = (id) => {
+    const deleteTodo = (id) => {
     const newList = list.filter((todo) => todo.id !== id);
 
     setList(newList);
@@ -26,8 +28,11 @@ function App() {
 
 
 return (
+  
   <div>
-    <h1>To Do List </h1>
+    
+    <center>
+    <h1>To Do or Not To Do </h1>
     <input
       type="text"
       value={input}
@@ -35,15 +40,18 @@ return (
     />
     <button onClick={() => addTodo(input)}>Add</button>
     <ul>
-      {lidt.map((todo) => (
+      {list.map((todo) => (
         <li key={todo.id}>
           {todo.todo}
           <button onClick= {() => deleteTodo(todo.id)}>&times;</button>
         </li>
       ))}
       </ul>
-  </div>
+      </center>
+      </div>
+  
 );
 }
+
 
 export default App
